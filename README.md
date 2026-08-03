@@ -12,14 +12,6 @@
 >
 > This project was created for educational purposes only inside an isolated virtual lab environment. It is intended to help students, penetration testers, and defenders better understand Active Directory attack techniques and their corresponding mitigations.
 
----
-
-# 📖 Full Documentation
-
-The complete walkthrough, explanations, screenshots, and attack demonstrations are available on Notion.
-
-**🔗 Notion Documentation:**  
-> (https://www.notion.so/Active-Directory-Its-Attacks-389d8b0f2d9880679567f17f49d61941?source=copy_link)
 
 ---
 
@@ -169,6 +161,16 @@ Also highlights the primary defensive measures for each attack. The following ma
 <p align="center">
   <img src="Images/Mitigations.png" width="95%">
 </p>
+
+---
+
+
+# 📖 Full Documentation
+
+The complete walkthrough, explanations, screenshots, and attack demonstrations are available on Notion.
+
+**🔗 Notion Documentation:**  
+> (https://www.notion.so/Active-Directory-Its-Attacks-389d8b0f2d9880679567f17f49d61941?source=copy_link)
 
 ---
 
