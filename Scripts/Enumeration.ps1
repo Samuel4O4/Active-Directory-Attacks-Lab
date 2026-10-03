@@ -132,6 +132,44 @@ foreach($Result in $Searcher.FindAll())
 }
 
 # --------------------------------------------------
+# NEW SECTION: AS-REP Roastable Users (Preauth Disabled)
+# --------------------------------------------------
+Write-Host "`n========== AS-REP ROASTABLE USERS (PREAUTH DISABLED) ==========" -ForegroundColor Yellow
+
+$Searcher.Filter = "(&(objectCategory=person)(objectClass=user))"
+$Searcher.PageSize = 1000
+
+$PreauthUsers = @()
+
+foreach($Result in $Searcher.FindAll())
+{
+    $User = [ADSI]$Result.Path
+
+    # Skip disabled accounts
+    $Disabled = ($User.userAccountControl.Value -band 2)
+    if($Disabled) { continue }
+
+    # Check for DONT_REQ_PREAUTH flag (4194304 / 0x400000)
+    $DontReqPreauth = ($User.userAccountControl.Value -band 4194304)
+
+    if($DontReqPreauth)
+    {
+        $PreauthUsers += $User.sAMAccountName
+        Write-Host $User.sAMAccountName -ForegroundColor White
+    }
+}
+
+if($PreauthUsers.Count -eq 0)
+{
+    Write-Host "No users found with preauthentication disabled." -ForegroundColor Green
+}
+else
+{
+    Write-Host "`nTotal AS-REP Roastable Users : $($PreauthUsers.Count)" -ForegroundColor White
+    Write-Host "These accounts can be targeted with AS-REP Roasting." -ForegroundColor White
+}
+
+# --------------------------------------------------
 Write-Host "`n========== COMPUTERS ==========" -ForegroundColor Yellow
 
 $Searcher.Filter="(objectClass=computer)"
