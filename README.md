@@ -130,7 +130,7 @@ Active-Directory-Lab/
 ├── Scripts/
 │   ├── Enumeration.ps1
 │   ├── EvilCorp Portal.html
-│   └── Reverse_Shell.py
+│   └── powerview.ps1
 │
 ├── Wordlists/
 │   ├── Passwords.txt
